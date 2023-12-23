@@ -20,25 +20,41 @@ To begin using this Python implementation in your project, simply clone the repo
 git clone https://github.com/dielect/PyStatusPage.git
 pip install -r requirements.txt
 ```
+## Initialization Parameters
 
-## Examples
+When initializing the `StatusPageAPI`, the following parameters control its behavior:
 
-Here's a quick example of how to use the API to retrieve the status of a page:
+| Parameter     | Type    | Requirement  | Description |
+|---------------|---------|--------------|-------------|
+| `api_key`     | `str`   | Mandatory    | Your API key for accessing Atlassian Statuspage. |
+| `raw_response`| `bool`  | Optional     | Determines the type of response returned by the API methods. If set to `True`, methods return the complete HTTP `Response` object, providing access to details like status codes and headers. By default (`False`), methods return the parsed JSON data. |
+
+### Example Usage
 
 ```python
 from statuspagePyAPI.statuspage_api import StatusPageAPI
 
+# Initializing with raw_response as True
+api = StatusPageAPI(api_key='YOUR_API_KEY', raw_response=True)
 
-api = StatusPageAPI(api_key='YOUR_API_KEY')
-res = api.components.get_components(page_id='YOUR_PAGE_ID')
-print(res)
+# Example API call
+response = api.components.get_components(page_id='YOUR_PAGE_ID')
+
+# Accessing the response
+if response.raw_response:
+    print("Status Code:", response.status_code)
+    print("JSON Data:", response.json())
+else:
+    print("Data:", response)
 ```
 
 ## Roadmap
 
+- [x] Complete development of components module.
 - [ ] Add asynchronous support for concurrent API calls.
 - [ ] Implement caching mechanisms for improved performance.
 - [ ] Expand the suite of integration tests for better coverage.
+
 
 ## Contributing
 
