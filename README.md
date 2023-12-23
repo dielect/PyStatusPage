@@ -1,5 +1,5 @@
 # Atlassian Statuspage API: Python Implementation
-
+![PyPI - Version](https://img.shields.io/pypi/v/statuspagePyAPI?label=statuspagePyAPI)
 ## Overview
 
 This project provides a comprehensive Python implementation of the Atlassian Statuspage OpenAPI interface. It is designed to seamlessly integrate with existing Python applications and systems, offering a straightforward and efficient way to interact with Atlassian Statuspage services.
@@ -17,8 +17,7 @@ This project provides a comprehensive Python implementation of the Atlassian Sta
 To begin using this Python implementation in your project, simply clone the repository and install the necessary dependencies:
 
 ```bash
-git clone https://github.com/dielect/PyStatusPage.git
-pip install -r requirements.txt
+pip install statuspagePyAPI
 ```
 ## Initialization Parameters
 
@@ -39,13 +38,6 @@ api = StatusPageAPI(api_key='YOUR_API_KEY', raw_response=True)
 
 # Example API call
 response = api.components.get_components(page_id='YOUR_PAGE_ID')
-
-# Accessing the response
-if response.raw_response:
-    print("Status Code:", response.status_code)
-    print("JSON Data:", response.json())
-else:
-    print("Data:", response)
 ```
 
 ## Roadmap
