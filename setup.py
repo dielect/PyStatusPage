@@ -6,7 +6,7 @@ with open('requirements.txt') as f:
 
 setup(
     name='statuspagePy',
-    version='1.0.2',
+    version='1.0.1',
     author='dielectric',
     author_email='dielectric.army@gmail.com',
     description='A Python implementation of the Atlassian Statuspage API, offering an intuitive and efficient '
