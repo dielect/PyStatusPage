@@ -5,7 +5,7 @@ with open('requirements.txt') as f:
     required = f.read().splitlines()
 
 setup(
-    name='pyStatusPage',
+    name='statuspagePy',
     version='1.0.0',
     author='dielectric',
     author_email='dielectric.army@gmail.com',
