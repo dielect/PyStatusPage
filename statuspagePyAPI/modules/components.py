@@ -11,7 +11,7 @@ class Components(ResponseHandler):
         super().__init__(raw_response)
         self._api_key: str = api_key
         self._base_url: str = base_url
-        self.session = CustomSession(api_key)
+        self._session = CustomSession(api_key)
 
     def create_component(self, page_id: str, **kwargs: Any) -> Union[Dict[str, Any], Response]:
         """
@@ -21,7 +21,7 @@ class Components(ResponseHandler):
         :return: 返回创建的组件信息
         """
         url = f'{self._base_url}/pages/{page_id}/components'
-        response = self.session.post(url, json=kwargs)
+        response = self._session.post(url, json={'component': kwargs})
         return self.process_response(response)
 
     def get_components(self, page_id: str) -> Union[Dict[str, Any], Response]:
@@ -31,7 +31,7 @@ class Components(ResponseHandler):
         :return: 返回组件列表
         """
         url = f'{self._base_url}/pages/{page_id}/components'
-        response = self.session.get(url)
+        response = self._session.get(url)
         return self.process_response(response)
 
     def update_component(self, page_id: str, component_id: str, **kwargs: Any) -> Union[Dict[str, Any], Response]:
@@ -43,7 +43,7 @@ class Components(ResponseHandler):
         :return: 返回更新后的组件信息
         """
         url = f'{self._base_url}/pages/{page_id}/components/{component_id}'
-        response = self.session.patch(url, json=kwargs)
+        response = self._session.patch(url, json={'component': kwargs})
         return self.process_response(response)
 
     def delete_component(self, page_id: str, component_id: str) -> Union[Dict[str, Any], Response]:
@@ -54,7 +54,7 @@ class Components(ResponseHandler):
         :return: 返回删除的组件信息
         """
         url = f'{self._base_url}/pages/{page_id}/components/{component_id}'
-        response = self.session.delete(url)
+        response = self._session.delete(url)
         return self.process_response(response)
 
     def get_component(self, page_id: str, component_id: str) -> Union[Dict[str, Any], Response]:
@@ -65,7 +65,7 @@ class Components(ResponseHandler):
         :return: 返回组件信息
         """
         url = f'{self._base_url}/pages/{page_id}/components/{component_id}'
-        response = self.session.get(url)
+        response = self._session.get(url)
         return self.process_response(response)
 
     def get_uptime(self, page_id: str, component_id: str) -> Union[Dict[str, Any], Response]:
@@ -76,5 +76,5 @@ class Components(ResponseHandler):
         :return: 返回组件的可用性
         """
         url = f'{self._base_url}/pages/{page_id}/components/{component_id}/uptime'
-        response = self.session.get(url)
+        response = self._session.get(url)
         return self.process_response(response)
