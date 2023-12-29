@@ -1,5 +1,6 @@
 # statuspage_api.py
 from statuspagePyAPI.modules.components import Components
+from statuspagePyAPI.modules.pages import Pages
 
 BASE_URL = 'https://api.statuspage.io/v1'
 
@@ -12,6 +13,7 @@ class StatusPageAPI:
 
         # 你可以在这里初始化各种模块
         self.components = Components(self.api_key, self.base_url, raw_response)
+        self.pages = Pages(self.api_key, self.base_url, raw_response)
 
     # 添加一些通用方法或者属性
     # ...
